@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/diseingreso.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+</head>
+<body>
+    <!--Envuelve todo el contenido del dashboard-->
+    <div class="dashboard-container">
+
+        <!--Barra lateral izquierda-->
+            <asside class="sidebar">
+                <div class="saludo-admin">
+                    <h2>Hola,Administrador</h2>
+                </div>
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a th:href="@{/ingreso}"><i class="fa-solid fa-house-user"></i>Inicio</a>
+                </li>
+                <li>
+                <a th:href="@{/asistencia}"><i class="fa-solid fa-user-check"></i>Asistencia</a>
+                </li>
+                <li>
+                <a th:href="@{/membresia}"><i class="fa-solid fa-id-card"></i>Membresia</a>
+                </li>
+                <li>
+                <a th:href="@{/socios}"><i class="fa-solid fa-users"></i>Socios</a>
+                </li>
+                <li><i class="fa-solid fa-chart-line"></i><a href="#">Ventas</a></li>
+                <li><i class="fa-solid fa-box"></i><a href="#">Productos</a></li>
+                <li><i class="fa-solid fa-money-bill"></i><a href="#">Gastos</a></li>
+                <li><i class="fa-solid fa-warehouse"></i><a href="#">Almacen</a></li>
+                <!-- Comnados cerrar sesion -->
+            </ul>
+            <ul class="sidebar-menu2">     
+                <li><a href="#"><i class="fa-solid fa-gear"></i>Configurar</a></li>
+                <li><a href="#"><i class="fa-solid fa-sign-out-alt"></i>Cerrar sesion</a></li>
+            </ul>    
+            </asside> 
+
+            <!-- Bloques de la derecha -->
+                <main>
+  <div class="panel">
+
+    <!-- Botones arriba -->
+    <section class="bloques">
+      <button class="btn-registrar"><i class="fa-solid fa-user-plus"></i> Inscribir</button>
+      <button class="btn-renovar"><i class="fa-solid fa-sync"></i> Renovar</button>
+      <button class="btn-transaccion"><i class="fa-solid fa-exchange-alt"></i> Transacción</button>
+    </section>
+
+    <!-- Fila principal: tabla + tarjetas laterales -->
+    <div class="fila-principal">
+
+      <!-- Tabla -->
+      <div class="tabla-thead">
+        <h3>Entradas del día: 2023-10-01</h3>
+        <table class="tabla">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Documento</th>
+              <th>Hora</th>
+              <th>Estado</th>
+              <th>Expiración</th>
+              <th>Intento</th>
+              <th style="width: 140px;">Imagen</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John Doe</td>
+              <td>123456789</td>
+              <td>09:00 AM</td>
+                <!-- Puntos de estado -->
+              <td class="celda-estado">
+                <span class="punto verde"></span>
+                <select class="select-estado">
+                  <option value="verde">Presente</option>
+                  <option value="rojo">Ausente</option>
+                </select>
+              </td>
+
+              <td>2023-10-02</td>
+              <td>1</td>
+              <td class="celda-imagen">
+                    <button class="btn-accion btn-oscuro"><i class="fa-solid fa-gear"></i></button>
+                    <button class="btn-accion btn-verde"><i class="fa-solid fa-rotate"></i></button>
+                    <button class="btn-accion btn-celeste"><i class="fa-solid fa-rotate"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Tarjetas laterales -->
+      <aside class="tarjetas-laterales">
+        <div class="tarjeta-info">
+          <div>
+            <p class="titulo-tarjeta">GANANCIAS DEL DÍA</p>
+            <p class="valor-tarjeta">S/ 1,285.50</p>
+          </div>
+          <i class="fa-solid fa-money-bill-wave icono-tarjeta"></i>
+        </div>
+        <div class="tarjeta-info">
+          <div>
+            <p class="titulo-tarjeta">CLIENTES ACTIVOS</p>
+            <p class="valor-tarjeta">248</p>
+          </div>
+          <i class="fa-solid fa-users icono-tarjeta"></i>
+        </div>
+        <div class="tarjeta-info">
+          <div>
+            <p class="titulo-tarjeta">CLIENTES POR VENCER</p>
+            <p class="valor-tarjeta">12</p>
+          </div>
+          <i class="fa-solid fa-clock icono-tarjeta"></i>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Tarjetas inferiores -->
+    <div class="tarjetas-inferiores">
+      <div class="tarjeta-inferior">
+        <i class="fa-solid fa-coins"></i>
+        <div>
+          <p class="titulo-inferior">TASAS DE CAMBIO DEL DÍA</p>
+          <p><strong>USD Compra:</strong> S/ 3.42</p>
+          <p><strong>USD Venta:</strong> S/ 3.45</p>
+        </div>
+      </div>
+      <div class="tarjeta-inferior">
+        <i class="fa-solid fa-chart-column"></i>
+        <div>
+          <p class="titulo-inferior">ENTRADAS POR USUARIOS</p>
+          <p><strong>35 entradas</strong> registradas</p>
+        </div>
+      </div>
+      <div class="tarjeta-inferior">
+        <i class="fa-solid fa-cake-candles"></i>
+        <div>
+          <p class="titulo-inferior">CUMPLEAÑOS DEL DÍA</p>
+          <p><strong>3 socios</strong> cumplen años hoy</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="diseingreso.js"></script>
+</body>
+</html>
+  </div>
+</main>

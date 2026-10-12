@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xport Fitness Gym - Ingreso</title>
+    <link rel="stylesheet" th:href="@{/css/formulario.css}">
+</head>
+
+<body>
+<main class="login-page">
+
+    <!-- ============ PANEL IZQUIERDO: marca + imagen ============ -->
+    <section class="hero" aria-label="Xport Fitness Gym">
+
+
+        <header class="brand">
+            <span class="brand-badge">
+                <img th:src="@{/img/logo.png}" alt="Logo Xport Fitness Gym" width="56" height="54">
+            </span>
+            <span class="brand-name">
+                <strong>XPORT</strong>
+                <small>Fitness Gym</small>
+            </span>
+        </header>
+
+        <!-- Ilustración: barra olímpica con discos -->
+        <svg class="hero-art" viewBox="0 110 600 380" role="img"
+             aria-label="Barra olímpica con discos de pesas" preserveAspectRatio="xMidYMid slice">
+            <defs>
+                <linearGradient id="plateBig" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#bfe3ff"/>
+                    <stop offset="1" stop-color="#3b82f6"/>
+                </linearGradient>
+                <linearGradient id="plateMid" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#ffffff"/>
+                    <stop offset="1" stop-color="#93c5fd"/>
+                </linearGradient>
+                <linearGradient id="barMetal" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#f1f5f9"/>
+                    <stop offset="0.5" stop-color="#94a3b8"/>
+                    <stop offset="1" stop-color="#e2e8f0"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Aros de fondo (disco visto de frente) -->
+            <g fill="none" stroke="#ffffff" stroke-opacity="0.10">
+                <circle cx="300" cy="300" r="280" stroke-width="2"/>
+                <circle cx="300" cy="300" r="225" stroke-width="2"/>
+                <circle cx="300" cy="300" r="170" stroke-width="2"/>
+            </g>
+
+            <!-- Barra + discos -->
+            <g transform="rotate(-14 300 300)">
+                <!-- barra -->
+                <rect x="14" y="293" width="572" height="14" rx="7" fill="url(#barMetal)"/>
+                <!-- agarre con relieve -->
+                <g stroke="#475569" stroke-opacity="0.45" stroke-width="1.5">
+                    <path d="M238 294v12M246 294v12M254 294v12M262 294v12M270 294v12M278 294v12M286 294v12M294 294v12M302 294v12M310 294v12M318 294v12M326 294v12M334 294v12M342 294v12M350 294v12M358 294v12"/>
+                </g>
+
+                <!-- lado izquierdo -->
+                <rect x="108" y="150" width="34" height="300" rx="9" fill="url(#plateBig)"/>
+                <rect x="146" y="188" width="28" height="224" rx="8" fill="url(#plateMid)"/>
+                <rect x="178" y="222" width="22" height="156" rx="7" fill="#dbeafe"/>
+                <rect x="204" y="278" width="14" height="44" rx="4" fill="#64748b"/>
+
+                <!-- lado derecho -->
+                <rect x="458" y="150" width="34" height="300" rx="9" fill="url(#plateBig)"/>
+                <rect x="426" y="188" width="28" height="224" rx="8" fill="url(#plateMid)"/>
+                <rect x="400" y="222" width="22" height="156" rx="7" fill="#dbeafe"/>
+                <rect x="382" y="278" width="14" height="44" rx="4" fill="#64748b"/>
+
+                <!-- brillo en los discos grandes -->
+                <rect x="114" y="164" width="5" height="272" rx="3" fill="#fff" fill-opacity="0.45"/>
+                <rect x="464" y="164" width="5" height="272" rx="3" fill="#fff" fill-opacity="0.45"/>
+            </g>
+
+            <!-- líneas de movimiento -->
+            <g stroke="#ffffff" stroke-linecap="round" stroke-opacity="0.18" stroke-width="3">
+                <path d="M24 470h90M60 500h130M10 530h70"/>
+                <path d="M486 90h90M440 120h130M530 150h60"/>
+            </g>
+        </svg>
+
+        <ul class="hero-values">
+            <li>Fuerza</li>
+            <li>Energía</li>
+            <li>Constancia</li>
+        </ul>
+    </section>
+
+    <!-- ============ PANEL DERECHO: formulario ============ -->
+    <section class="panel-form">
+        <form class="login-form" id="form-login" autocomplete="on"
+              th:action="@{/dashboard}" method="post">
+
+            <p class="form-kicker">Área de miembros</p>
+            <h1>Qué bueno<br>tenerte de vuelta.</h1>
+            <p class="form-sub">Inicia sesión para continuar con tu entrenamiento.</p>
+
+            <div class="field">
+                <label for="usuario">Usuario</label>
+                <div class="input-wrap">
+                    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+                    <input type="text" id="usuario" name="usuario" required
+                           autocomplete="username" placeholder="Ingresa tu usuario"
+                           th:value="${usernameGuardado}">
+                </div>
+            </div>
+
+            <div class="field">
+                <label for="password">Contraseña</label>
+                <div class="input-wrap">
+                    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                    <input type="password" id="password" name="password" required
+                           autocomplete="current-password" placeholder="Ingresa tu contraseña">
+                    <button type="button" class="toggle-pass" id="toggle-pass"
+                            aria-label="Mostrar contraseña" aria-pressed="false">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row-options">
+                <label class="check">
+                    <input type="checkbox" name="recordar">
+                    <span>Recordarme</span>
+                </label>
+                <span class="help">¿Problemas para ingresar? Consulta en recepción.</span>
+            </div>
+
+            <!-- Mensaje de error -->
+            <div class="alert" role="alert" th:if="${error}">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.5"/></svg>
+                <span th:text="${error}">Usuario o contraseña incorrectos.</span>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <span>Ingresar</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+
+            <p class="secure">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
+                Acceso seguro para miembros
+            </p>
+        </form>
+
+        <footer class="panel-foot">
+            <span>© 2026 Xport Fitness Gym</span>
+            <span>Entrena. Crece. Repite.</span>
+        </footer>
+    </section>
+
+</main>
+
+<script>
+    // Mostrar / ocultar contraseña
+    (function () {
+        var btn = document.getElementById('toggle-pass');
+        var input = document.getElementById('password');
+        btn.addEventListener('click', function () {
+            var visible = input.type === 'text';
+            input.type = visible ? 'password' : 'text';
+            btn.setAttribute('aria-pressed', String(!visible));
+            btn.setAttribute('aria-label', visible ? 'Mostrar contraseña' : 'Ocultar contraseña');
+        });
+    })();
+</script>
+</body>
+</html>

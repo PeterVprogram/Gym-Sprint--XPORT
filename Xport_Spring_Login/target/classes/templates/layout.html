@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(titulo)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}">Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/diseingreso.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Sidebar reutilizable -->
+    <div class="dashboard-container">
+        <aside class="sidebar" th:fragment="sidebar(activo)">
+            <div class="saludo-admin">
+                <h2>Hola, Administrador</h2>
+            </div>
+            <ul class="sidebar-menu">
+                <li th:classappend="${activo == 'inicio'} ? 'active'">
+                    <a th:href="@{/ingreso}"><i class="fa-solid fa-house-user"></i>Inicio</a>
+                </li>
+                <li th:classappend="${activo == 'asistencia'} ? 'active'">
+                    <a th:href="@{/asistencia}"><i class="fa-solid fa-user-check"></i>Asistencia</a>
+                </li>
+                <li th:classappend="${activo == 'membresia'} ? 'active'">
+                    <a th:href="@{/membresia}"><i class="fa-solid fa-id-card"></i>Membresia</a>
+                </li>
+                <li th:classappend="${activo == 'socios'} ? 'active'">
+                    <a th:href="@{/socios}"><i class="fa-solid fa-users"></i>Socios</a>
+                </li>
+                <li th:classappend="${activo == 'ventas'} ? 'active'">
+                    <a th:href="@{/ventas}"><i class="fa-solid fa-chart-line"></i>Ventas</a>
+                </li>
+                <li th:classappend="${activo == 'productos'} ? 'active'">
+                    <a th:href="@{/productos}"><i class="fa-solid fa-box"></i>Productos</a>
+                </li>
+                <li th:classappend="${activo == 'gastos'} ? 'active'">
+                    <a th:href="@{/gastos}"><i class="fa-solid fa-money-bill"></i>Gastos</a>
+                </li>
+                <li th:classappend="${activo == 'almacen'} ? 'active'">
+                    <a th:href="@{/almacen}"><i class="fa-solid fa-warehouse"></i>Almacen</a>
+                </li>
+            </ul>
+            <ul class="sidebar-menu2">
+                <li><a href="#"><i class="fa-solid fa-gear"></i>Configurar</a></li>
+                <li><a th:href="@{/logout}"><i class="fa-solid fa-sign-out-alt"></i>Cerrar sesion</a></li>
+            </ul>
+        </aside>
+    </div>
+
+</body>
+</html>

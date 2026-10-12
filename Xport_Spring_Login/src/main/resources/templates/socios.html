@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout :: head('Registro Socios')}"></head>
+<body>
+
+    <div class="dashboard-container">
+        <aside th:replace="~{layout :: sidebar('socios')}"></aside>
+
+        <main>
+            <div class="panel">
+
+                <!-- Título -->
+                <div class="titulo-modulo">
+                    <i class="fa-solid fa-users"></i>
+                    <h1>Registro Socios</h1>
+                </div>
+
+                <div class="contenido-form">
+
+                    <!-- ============ COLUMNA IZQUIERDA: FORMULARIO ============ -->
+                    <form class="form-socios">
+
+                        <!-- Código + Tipo Doc + Nro Doc -->
+                        <div class="fila">
+                            <div class="campo">
+                                <label><i class="fa-solid fa-hashtag"></i> Código</label>
+                                <input type="text" placeholder="70012717">
+                            </div>
+
+                            <div class="campo">
+                                <label><i class="fa-solid fa-id-card"></i> Tipo Doc.</label>
+                                <select>
+                                    <option>DNI</option>
+                                    <option>RUC</option>
+                                    <option>Carnet Ext.</option>
+                                </select>
+                            </div>
+
+                            <div class="campo">
+                                <label><i class="fa-solid fa-key"></i> Nro Documento</label>
+                                <input type="text" placeholder="70012717">
+                            </div>
+                        </div>
+
+                        <!--  Nombre o Razón  -->
+                        <div class="campo campo-full">
+                            <label><i class="fa-solid fa-user"></i> Nombre o Razón Social</label>
+                            <input type="text" placeholder="ALEJANDRO INGOL (HIJO) Y ALEJANDRO INGOL (PAPÁ)">
+                        </div>
+
+                        <!--  Dirección -->
+                        <div class="campo campo-full">
+                            <label><i class="fa-solid fa-location-dot"></i> Dirección</label>
+                            <input type="text" placeholder="Av. Próceres de la independencia 1234, Lima">
+                        </div>
+
+                        <!--  Teléfono 1 + Teléfono 2 -->
+                        <div class="fila">
+                            <div class="campo">
+                                <label><i class="fa-solid fa-phone"></i> Teléfono 1</label>
+                                <input type="tel" placeholder="976564321">
+                            </div>
+
+                            <div class="campo">
+                                <label><i class="fa-solid fa-phone"></i> Teléfono 2</label>
+                                <input type="tel" placeholder="986543210">
+                            </div>
+                        </div>
+
+                        <!-- Sexo + Correo -->
+                        <div class="fila">
+                            <div class="campo">
+                                <label><i class="fa-solid fa-venus-mars"></i> Sexo</label>
+                                <select>
+                                    <option>MASCULINO</option>
+                                    <option>FEMENINO</option>
+                                </select>
+                            </div>
+
+                            <div class="campo">
+                                <label><i class="fa-solid fa-envelope"></i> Correo</label>
+                                <input type="email" placeholder="alejandro.ingol@gmail.com">
+                            </div>
+                        </div>
+
+                        <!--  Fecha Nacimiento + Fecha Registro -->
+                        <div class="fila">
+                            <div class="campo">
+                                <label><i class="fa-solid fa-calendar"></i> Fecha Nacimiento</label>
+                                <input type="date">
+                            </div>
+
+                            <div class="campo">
+                                <label><i class="fa-solid fa-calendar-check"></i> Fecha Registro</label>
+                                <input type="date">
+                            </div>
+                        </div>
+
+                        <!--  Estado -->
+                        <div class="fila">
+                            <div class="campo">
+                                <label><i class="fa-solid fa-circle-check"></i> Estado</label>
+                                <select>
+                                    <option>ACTIVO</option>
+                                    <option>INACTIVO</option>
+                                </select>
+                            </div>
+
+                            <div class="campo">
+                                <label><i class="fa-solid fa-note-sticky"></i> Observaciones</label>
+                                <input type="text" placeholder="Sin observaciones">
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <!-- ============ COLUMNA DERECHA: FOTO ============ -->
+                    <aside class="foto-card">
+
+                        <div class="foto-titulo">FOTO DEL SOCIO</div>
+
+                        <div class="foto-avatar">
+                            <i class="fa-solid fa-user-circle"></i>
+                        </div>
+
+                        <button type="button" class="btn-subir">
+                            <i class="fa-solid fa-camera"></i> Subir Foto
+                        </button>
+
+                        <div class="huella-titulo">HUELLA DACTILAR</div>
+                        <div class="huella-box">
+                            <i class="fa-solid fa-fingerprint"></i>
+                        </div>
+
+                    </aside>
+
+                </div>
+
+                <!-- ============ BOTONES INFERIORES ============ -->
+                <div class="botones-form">
+                    <button type="button" class="btn-form btn-nuevo">
+                        <i class="fa-solid fa-plus"></i> Nuevo (F2)
+                    </button>
+                    <button type="button" class="btn-form btn-grabar">
+                        <i class="fa-solid fa-pen"></i> Grabar (F3)
+                    </button>
+                    <button type="button" class="btn-form btn-actualizar">
+                        <i class="fa-solid fa-rotate"></i> Actualizar (F4)
+                    </button>
+                    <button type="button" class="btn-form btn-salir">
+                        <i class="fa-solid fa-right-from-bracket"></i> Salir (Esc)
+                    </button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

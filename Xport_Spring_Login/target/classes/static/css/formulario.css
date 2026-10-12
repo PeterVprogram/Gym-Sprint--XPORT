@@ -1,0 +1,419 @@
+/* =====================================================
+   XPORT FITNESS GYM - Login (azul y blanco)
+   ===================================================== */
+/* Fuentes locales (Barlow, licencia OFL): funcionan sin internet */
+@font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/barlow-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/barlow-latin-500-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Barlow';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/fonts/barlow-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/fonts/barlow-condensed-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Barlow Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/barlow-condensed-latin-700-normal.woff2') format('woff2');
+}
+
+:root {
+    --navy:   #0b1e4d;
+    --blue:   #2563eb;
+    --blue-d: #1e40af;
+    --sky:    #87ceeb;
+    --ink:    #0f1b3d;
+    --muted:  #5b6784;
+    --line:   #cfd8e8;
+    --bg:     #ffffff;
+    --err:    #b42318;
+    --err-bg: #fef3f2;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+    font-family: 'Barlow', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Estructura de dos paneles ---------- */
+.login-page {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    min-height: 100vh;
+}
+
+/* =====================================================
+   PANEL IZQUIERDO
+   ===================================================== */
+.hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 40px clamp(28px, 5vw, 64px);
+    color: #fff;
+    background:
+        radial-gradient(900px 500px at 85% 15%, rgba(135, 206, 235, 0.35), transparent 60%),
+        linear-gradient(160deg, var(--navy) 0%, #12358f 55%, var(--blue) 120%);
+}
+
+.hero-art {
+    flex: 1 1 0;
+    min-height: 140px;
+    width: 100%;
+    max-width: 640px;
+    max-height: 420px;
+    align-self: center;
+    margin-bottom: 20px;
+    overflow: visible;
+    pointer-events: none;
+    filter: drop-shadow(0 24px 40px rgba(5, 15, 50, 0.45));
+}
+
+/* Marca */
+.brand { display: flex; align-items: center; gap: 14px; }
+
+.brand-badge {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #fff;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 0 3px rgba(135, 206, 235, 0.55);
+    flex-shrink: 0;
+}
+.brand-badge img { width: 70%; height: auto; display: block; }
+
+.brand-name { display: flex; flex-direction: column; line-height: 1; }
+.brand-name strong {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.brand-name small {
+    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sky);
+    letter-spacing: 2px;
+}
+
+/* Titular */
+.hero-copy h2 {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: clamp(42px, 6.4vw, 100px);
+    line-height: 0.95;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+.hero-copy h2 span { color: var(--sky); }
+.hero-copy p {
+    margin-top: 24px;
+    max-width: 38ch;
+    font-size: clamp(16px, 1.3vw, 19px);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Valores */
+.hero-values {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.hero-values li { display: flex; align-items: center; gap: 10px; }
+.hero-values li::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sky);
+}
+
+/* =====================================================
+   PANEL DERECHO
+   ===================================================== */
+.panel-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px clamp(24px, 6vw, 88px) 28px;
+    background: var(--bg);
+}
+
+.login-form {
+    width: 100%;
+    max-width: 520px;
+    margin: auto;
+}
+
+.form-kicker {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--blue);
+    margin-bottom: 14px;
+}
+
+.login-form h1 {
+    font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    font-size: clamp(42px, 4.4vw, 64px);
+    line-height: 1;
+    color: var(--navy);
+}
+
+.form-sub {
+    margin: 16px 0 34px;
+    font-size: 16px;
+    color: var(--muted);
+}
+
+/* Campos */
+.field { margin-bottom: 22px; }
+
+.field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 54px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    background: #f7f9fd;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.input-wrap:focus-within {
+    border-color: var(--blue);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.input-wrap .ico {
+    width: 20px;
+    height: 20px;
+    margin-left: 16px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: var(--muted);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.input-wrap:focus-within .ico { stroke: var(--blue); }
+
+.input-wrap input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0 14px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font: 500 16px 'Barlow', 'Segoe UI', sans-serif;
+    color: var(--ink);
+}
+.input-wrap input::placeholder { color: #93a0bd; font-weight: 400; }
+
+.toggle-pass {
+    width: 48px;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    border-radius: 0 10px 10px 0;
+}
+.toggle-pass svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: var(--muted);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.toggle-pass:hover svg,
+.toggle-pass[aria-pressed="true"] svg { stroke: var(--blue); }
+.toggle-pass:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+
+/* Recordarme / ayuda */
+.row-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px 16px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.check { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500; color: var(--navy); }
+.check input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--blue);
+    cursor: pointer;
+}
+.help { font-size: 13px; color: var(--muted); }
+
+/* Error */
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 13px 16px;
+    border: 1px solid #fda29b;
+    border-left: 4px solid var(--err);
+    border-radius: 10px;
+    background: var(--err-bg);
+    color: var(--err);
+    font-size: 14px;
+    font-weight: 500;
+}
+.alert svg {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+}
+
+/* Botón */
+.btn-login {
+    width: 100%;
+    height: 56px;
+    border: 0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    font: 600 16px 'Barlow', 'Segoe UI', sans-serif;
+    letter-spacing: 1px;
+    color: #fff;
+    background: linear-gradient(180deg, #3b82f6, var(--blue));
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+    transition: background .2s, transform .15s, box-shadow .2s;
+}
+.btn-login svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .2s;
+}
+.btn-login:hover {
+    background: linear-gradient(180deg, var(--blue), var(--blue-d));
+    box-shadow: 0 10px 24px rgba(30, 64, 175, 0.4);
+}
+.btn-login:hover svg { transform: translateX(4px); }
+.btn-login:active { transform: translateY(1px); }
+.btn-login:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
+
+.secure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 22px;
+    font-size: 13px;
+    color: var(--muted);
+}
+.secure svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: var(--blue);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Pie */
+.panel-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 6px 16px;
+    padding-top: 24px;
+    font-size: 12px;
+    color: #7d89a6;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 960px) {
+    .login-page { grid-template-columns: 1fr; }
+
+    .hero {
+        min-height: 0;
+        padding: 28px 24px 32px;
+        gap: 18px;
+    }
+    .hero-art { flex: 0 0 auto; height: 150px; margin-bottom: 16px; }
+    .hero-copy h2 { font-size: clamp(40px, 11vw, 64px); }
+    .hero-copy p,
+    .hero-values { display: none; }
+
+    .panel-form { padding: 36px 24px 24px; }
+}
+
+@media (max-width: 420px) {
+    .help { font-size: 12px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}
